@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="stylesheet" href="SearchStyle.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navdiv">
+                <div class="logo">
+                   <a href="Home.html"><img src="/Assets/QUICK BYTE_logo1.png"></a>
+                </div>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="#">Recipe</a></li>
+                    <li><a href="Favorites.html">Favorites</a></li>
+                    <li><a href="Aboutus.html">About Us</a></li>
+                    <button><a href="/recipes/search.html">Search</a></button>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section class="search" id="search">
+    <h1></h1>
+    <p></p>
+    <div class="search-container">
+    <h1>🔎 What are you looking for?  🔍</h1>
+    <input type="text" id="searchInput" placeholder="Ma Anong Ulam?">
+    <div id="results"></div>
+    <p></p>
+    </section> 
+  </div>
+  <script src="FoodDataMain.js"></script>
+  <script src="FoodData2(Meryenda).js"></script>
+  <script src="FoodData3(TanghalianHapunan).js"></script>
+  <script src="JavaScriptforSearchPage.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const itemName = params.get("item");
+
+    const item = menuData.find(i => i.name === itemName);
+    const container = document.getElementById("foodDetails");
+
+    if (item) {
+      container.innerHTML = `
+        <h1>${item.name}</h1>
+        <img src="${item.image}" alt="${item.name}">
+        <p>${item.description}</p>
+        <p><strong>Category:</strong> ${item.category}</p>
+      `;
+    } else {
+      container.innerHTML = "<p>Item not found.</p>";
+    }
+  </script>
+</body>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section menu">
+            <h3>Menu</h3>
+            <ul>
+                <li><a href="Almusal.html">Almusal</a></li>
+                <li><a href="Meryenda.html">Meryenda</a></li>
+                <li><a href="Tanghalian&hapunan.html">Tanghalian/Hapunan</a></li>
+                <li><a href="Favorites.html">Favorites</a></li>
+            </ul>
+        </div>
+        <div class="footer-section about">
+            <h3>About Us</h3>
+             <ul>
+                  <li>Students Of Cavite State University - CCAT Campus</li>
+                  <li>Studying Information Technology program</li>
+                  <li>First year Students</li>
+                  <li>Section: 102-A</li>
+            </ul>
+        </div>
+        <div class="footer-section disclaimer">
+            <h3>Disclaimer</h3>
+            <p>This website is for educational purposes only. No copyright infringement is intended, and credit is given to the rightful owners.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html> 
+</html>
